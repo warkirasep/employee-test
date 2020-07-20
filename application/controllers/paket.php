@@ -40,6 +40,7 @@ class Paket extends CI_Controller {
 		$data = array(
 			'id_paket' => $id_paket,
 			'paket' => $paket,
+			'deskripsi' => $deskripsi
 		);
 
 		$hasil = $this->paket_model->Simpan('paket', $data);

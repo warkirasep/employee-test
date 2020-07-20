@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <?php $this->load->view('include/head') ?>
+</head>
+<body>
+<div id="wrapper">
+    <?php $this->load->view('layouts/topbar'); ?>
+     <!-- /#page-wrapper -->
+ </div>
 <body>
   <div id="wrapper">    
   <!-- /. NAV TOP  --> 
@@ -26,7 +35,11 @@
                   <div class="form-group">
                     <label>Paket</label>
                     <input class="form-control" name="paket" required/>
+                  </div>
 
+                  <div class="form-group">
+                    <label>Deskripsi</label>
+                    <input class="form-control" name="deskripsi" required/>
                   </div>
                   <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Simpan</button>                    
