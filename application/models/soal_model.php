@@ -42,4 +42,11 @@ class Soal_model extends Ci_Model {
     $data = $this->db->query('select * from soal order by id_soal asc');
     return $data;
   }
+
+  public function edit(){
+   $data = $this->db->query('select * from soal order by id_soal asc');
+    return $data;
+
+
+  }
 }
