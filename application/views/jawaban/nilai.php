@@ -24,25 +24,29 @@
                                         <tr>
                                             <th>No</th>                                            
                                             <th>Tanggal Tes</th>                                            
-                                            <th>Karyawan</th>
-                                            <th>Benar</th>
-                                            <th>Salah</th>
-                                            <th>Nilai</th>
+                                            <th>Materi</th>
                                             <th>Aksi</th>                                                                                        
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $no=0; foreach($nilai as $kon) { $no++?>
-                                        <tr>
-                                            <td><?php echo $no; ?></td>
-                                            <td><?php echo $kon['tgl_tes']; ?></td>                                                                            
-                                            <td><?php echo $kon['nama']; ?></td>                                                                                                                       
-                                            <td><?php echo $kon['benar']; ?></td>                                                                                                                       
-                                            <td><?php echo $kon['salah']; ?></td>                                                                                                                       
-                                            <td><?php echo $kon['total_nilai']; ?></td> 
-                                            <td width='5%' align='center'><a class='btn btn-warning btn-xs' title='detail' href="<?php echo base_url();?>jawaban/dnilai/<?php echo $kon['id_jawaban']; ?>"><span class="glyphicon glyphicon-eye-open"></a></span></td>
-                                        </tr>
-                                    <?php } ?>
+                                        <?php 
+                                            $no =1;    
+                                        ?>
+                                        <?php foreach($nilai as $row): ?>
+                                            <tr>
+                                                <td><?php  echo $no; ?></td>
+                                                <td><?php  echo date('d-m-Y', strtotime($row->tgl_tes)); ?></td>
+                                                <td><?php echo $row->paket; ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url().'jawaban/dnilai/'.$row->id_jawaban; ?>" class="btn btn-info btn-xs">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                            $no++;
+                                        ?>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

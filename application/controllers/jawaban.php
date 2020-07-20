@@ -9,6 +9,7 @@ class Jawaban extends CI_Controller {
 			'jawaban_model',
 			'paket_model',
 			'karyawan_model',
+			'jawaban_detail_model',
 		]);
 	}
 	
@@ -50,21 +51,23 @@ class Jawaban extends CI_Controller {
 		$user2 = $this->session->userdata('username');	
         $nis = $this->user_model->AmbilNis($user2);
         $idMhs = $this->karyawan_model->AmbilIdMhs($nis);
-
+		$nilai = $this->jawaban_model->hasilNilai($idMhs);
 		$data = array(
-			'nilai'=>$this->jawaban_model->AmbilNilai2($idMhs)->result_array(),
+			'nilai'=> $nilai,
 			'user' =>$user,			
-		);  
-
+		);
 		$this->load->view('jawaban/nilai', $data);
 	}
 
-	public function dnilai($kode = 0){
-		//$this->ceklogin();		
-
+	public function dnilai(){
+		$id_jawaban = $this->uri->segment(3);
+		$id_paket = $this->jawaban_model->first($id_jawaban);
+		$paket = $this->paket_model->first($id_paket->id_paket);
+		$nilai = $this->jawaban_detail_model->hasil_test($id_jawaban);
 		$data = array(
-			'nilai'=>$this->modeladmin->AmbilDetailNilai($kode)->result_array(),				
-			'kode'=>$kode,				
+			'nilai'=> $nilai,				
+			'kode'=>$id_jawaban,
+			'paket' => $paket				
 		);
 		$this->load->view('jawaban/dnilai', $data);
 	}
@@ -127,7 +130,21 @@ class Jawaban extends CI_Controller {
 			'tgl_tes' => date('Y-m-d'),
 			'id_paket' => $this->input->post('id_paket')
 		];
-		$this->jawaban_model->insertJawaban($data_jawaban);
+		$result = $this->jawaban_model->insertJawaban($data_jawaban);
+		$id_jawaban = $this->jawaban_model->getIdJawaban($this->input->post('id_paket'), $idMhs);
+		$posts = $this->input->post('soal');
+		$jawabans = $this->input->post('jawaban');
+		foreach($posts as $key=>$soal){
+			$data = [
+				'id_soal' => $soal,
+				'id_jawaban' => $id_jawaban->id_jawaban,
+				'jawaban' => $jawabans[$key]
+
+			];
+			$this->jawaban_detail_model->insert_multiple($data);
+			
+		}
+		redirect('jawaban/dnilai/'.$id_jawaban->id_jawaban);
 		/*
         $this->ceklogin();   
         $this->load->model('soal_model');    
@@ -237,6 +254,7 @@ class Jawaban extends CI_Controller {
 
 	public function pilih_materi()
 	{
+
 		$data['materi'] = $this->paket_model->get_data();
 		$this->load->view('siswa/materi', $data);
 	}
@@ -252,7 +270,11 @@ class Jawaban extends CI_Controller {
 		$idMhs = $this->karyawan_model->AmbilIdMhs($nis);
 		$cek_test = $this->jawaban_model->cek_test($id_paket, $idMhs);
 		if(!empty($cek_test)){
-			redirect('jawaban/pilih_materi');
+			$flash_msg = "Anda Sudah Test !!!";
+			$value = '<div class="alert alert-success" role="alert">'.$flash_msg.'</div>';
+			$this->session->set_flashdata('item', $value);
+			$data['materi'] = $this->paket_model->get_data();
+			$this->load->view('siswa/materi', $data);
 		}else {
 			redirect('jawaban/soal/'.$id_paket);
 		}

@@ -46,4 +46,24 @@ class Jawaban_model extends Ci_Model {
     $res = $this->db->insert($this->table, $data);
     return $res;
   }
+
+  public function getIdJawaban($id_paket, $idmhs){
+    $result = $this->db->query('SELECT * FROM jawaban WHERE id_paket='.$id_paket.' AND id_karyawan='.$idmhs.'');
+    return $result->row();
+  }
+
+  public function first($id_jawaban)
+  {
+    $result = $this->db->query("SELECT * FROM jawaban WHERE id_jawaban='$id_jawaban'");
+    return $result->row();
+
+  }
+
+  public function hasilNilai($idmhs)
+  {
+    $result = $this->db->query("SELECT * FROM jawaban 
+              INNER JOIN paket ON paket.id_paket=jawaban.id_paket
+              WHERE id_karyawan='$idmhs'");
+    return $result->result();
+  }
 }

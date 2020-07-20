@@ -2,6 +2,8 @@
 
 class Jawaban_detail_model extends Ci_Model {  
 
+	protected $table = 'jawaban_detail';
+
 	public function Simpan($tabel, $data){
 		$res = $this->db->insert($tabel, $data);
 		return $res;
@@ -17,5 +19,18 @@ class Jawaban_detail_model extends Ci_Model {
 		$this->db->where('id_jawaban_detail',$id_jawaban);
 		$this->db->update('jawaban_detail',$data);
 
+	}
+
+	public function insert_multiple($data){
+		$res = $this->db->insert($this->table, $data);
+		return $res;
+	}
+
+	public function hasil_test($id_jawaban)
+	{
+		$res = $this->db->query("SELECT * FROM $this->table 
+				INNER JOIN soal ON jawaban_detail.id_soal=soal.id_soal
+				WHERE id_jawaban='$id_jawaban'");
+		return $res->result();
 	}
 }

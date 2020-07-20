@@ -60,31 +60,79 @@
                 </div>              
                  <!-- /. ROW  -->
                 <hr />                
-                <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/test">Kembali</a></p>              
+                <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/pilih_materi">Kembali</a></p>              
             <div class="row">
                 <div class="col-md-12">                
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Hasil Tes No. <?php echo $kode; ?>
+                            <p class="text-danger"><?php echo $paket->paket; ?></p>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <?php $total=0; $no=0; foreach($nilai as $kon) { 
-                                    $total += $kon['nilai'];
-                                    $jawaban = strtolower($kon['jawaban']);
-                                    $no++?>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Soal</th>
+                                            <th>Jawaban</th>
+                                            <th>Hasil</th>
+                                            <th>Nilai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $no = 1;
+                                            $benar = 0; 
+                                        ?>
+                                        <?php foreach($nilai as $row): ?>
+                                            <tr>
+                                                <td><?php echo $no;?></td>
+                                                <td>
+                                                    <?php echo $row->soal;?>
+                                                    <br>
+                                                    <?php echo 'A. '.$row->a; ?>
+                                                    <br>
+                                                    <?php echo 'B. '.$row->b; ?>
+                                                    <br>
+                                                    <?php echo 'C. '.$row->c; ?>
+                                                    <br>
+                                                    <?php echo 'D. '.$row->d; ?>
+                                                    <br>
+                                                    <?php echo 'E. '.$row->e; ?>
+                                                </td>
+                                                <td><?php echo $row->jawaban; ?></td>
+                                                <td>
+                                                    <?php if($row->jawaban == $row->kunci):?>
+                                                        <?php 
+                                                            $benar += 20;    
+                                                        ?>
+                                                        <strong>Benar</strong>
+                                                    <?php else: ?>
+                                                        <strong>Salah</strong>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if($row->jawaban == $row->kunci):?>
+                                                        <strong>20</strong>
+                                                    <?php else: ?>
+                                                        <strong>0</strong>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
 
-                                    <p><?php echo $no.". ".$kon['soal'];?></p>                                    
-                                    <?php if($kon['jawaban']== $kon['kunci']) { ?>
-                                        <p><b>Jawaban : <?php echo $kon['jawaban']." (".$kon[$jawaban].") <span class='label label-primary'>Benar</span>";?></b></p>
-                                    <?php } else { ?>
-                                        <p><b>Jawaban : <?php echo $kon['jawaban']." (".$kon[$jawaban].") <span class='label label-danger'>Salah</span> Kunci : ".$kon['kunci']." (".$kon[$jawaban].")";?></b></p>
-                                    <?php } ?>
-                                    <hr>
-                                <?php } ?>           
-
-                                <?php echo "<h1>Nilai Anda $total</<h1>" ?>                     
+                                            <?php $no++; ?>
+                                        <?php endforeach; ?>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td rowspan="4"><strong>Total Nilai</strong></td>
+                                            <td><strong><?php echo $benar; ?></strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>              
                         </div>
                     </div>
                     <!--End Advanced Tables -->

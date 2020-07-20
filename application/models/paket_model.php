@@ -29,4 +29,10 @@ class Paket_model extends Ci_Model {
     return $result->result();
   }
 
+  public function first($id_paket)
+  {
+    $result = $this->db->query("SELECT * from paket WHERE id_paket='$id_paket'");
+    return $result->row();
+  }
+
 }

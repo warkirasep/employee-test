@@ -49,7 +49,6 @@ class Soal extends CI_Controller {
 			$this->upload->do_upload('file_upload');
 			$upload_data = $this->upload->data();
 		$this->ceklogin();
-		$id_soal = '';
 		$paket = $_POST['paket'];
 		$soal = $_POST['soal'];
 		$a = $_POST['a'];
@@ -62,7 +61,6 @@ class Soal extends CI_Controller {
 		$file_name = $upload_data['file_name'];
 
 		$data = array(
-			'id_soal' => $id_soal,
 			'paket' => $paket,
 			'soal' => $soal,
 			'a' => $a,
@@ -72,7 +70,7 @@ class Soal extends CI_Controller {
 			'e' => $e,
 			'kunci' => $kunci,
 			'status' => $status,
-			);
+		);
 
 		$hasil = $this->soal_model->Simpan('soal', $data);
 

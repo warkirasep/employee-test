@@ -67,38 +67,46 @@
                         <div class="panel-body" style="height: 800px; overflow: auto;">
                              <form role="form" action="<?php echo base_url(); ?>jawaban/jawab" method="post" onsubmit="return confirm('Anda Yakin ?')">
                                 <input type="hidden" name="id_paket" value="<?php echo $id_paket; ?>">
-                                <?php $no=0; foreach($soal as $soal) { $no++ ?>
+                                <?php
+                                    $radio_button = 0;
+                                    $no = 1;
+                                ?>
+                                <?php foreach($soal as $soal): ?>
                                     <div class="form-group">
                                         <b><?php echo $no; ?>. </b><label>
                                         <?php echo $soal['soal']; ?></label>
-                                        <input type='hidden' name='jawaban[]' value='<?php echo $soal['id_soal']; ?>'/>
+                                        <input type='hidden' name='soal[]' value='<?php echo $soal['id_soal']; ?>'/>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="jawaban[<?php echo $soal['id_soal']; ?>]" id="optionsRadios1" value="A" required/><b>A. </b> <?php echo $soal['a']; ?>
+                                                <input type="radio" name="jawaban[<?php echo $radio_button ?>]" value="A" required/><b>A. </b> <?php echo $soal['a']; ?>
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="jawaban[<?php echo $soal['id_soal']; ?>]" id="optionsRadios2" value="B" required/><b>B. </b><?php echo $soal['b']; ?>
+                                                <input type="radio" name="jawaban[<?php echo $radio_button ?>]" value="B" required/><b>B. </b><?php echo $soal['b']; ?>
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="jawaban[<?php echo $soal['id_soal']; ?>]" id="optionsRadios3" value="C" required/><b>C. </b><?php echo $soal['c']; ?>
+                                                <input type="radio" name="jawaban[<?php echo $radio_button ?>]" value="C" required/><b>C. </b><?php echo $soal['c']; ?>
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="jawaban[<?php echo $soal['id_soal']; ?>]" id="optionsRadios4" value="D" required/><b>D. </b><?php echo $soal['d']; ?>
+                                                <input type="radio" name="jawaban[<?php echo $radio_button ?>]" value="D" required/><b>D. </b><?php echo $soal['d']; ?>
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="jawaban[<?php echo $soal['id_soal']; ?>]" id="optionsRadios5" value="E" required/><b>E. </b><?php echo $soal['e']; ?>
+                                                <input type="radio" name="jawaban[<?php echo $radio_button ?>]" value="E" required/><b>E. </b><?php echo $soal['e']; ?>
                                             </label>
 					                   </div>
 				    </div>
-					    <?php } ?>                                
+                                <?php
+                                    $no++;
+                                    $radio_button++;
+                                ?>
+                                <?php endforeach; ?>                               
                                  <button type="submit" class="btn btn-primary">Selesai</button> 
                                 </form>
                                 <br />

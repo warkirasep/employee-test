@@ -14,6 +14,11 @@
      <hr />
      <div class="row">
       <div class="col-md-12">
+        <?php if($this->session->flashdata('item')){ ?>
+          <div class="alert alert-success">
+            <?php echo $this->session->flashdata('item'); ?>
+          </div>
+        <?php } ?>
         <!-- Form Elements -->
         <div class="panel panel-default">
           
