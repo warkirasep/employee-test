@@ -59,8 +59,12 @@
                     </div>
                 </div>              
                  <!-- /. ROW  -->
-                <hr />                
-                <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/nilai">Kembali</a></p>              
+                <hr />
+                <?php if(user_session('level') == 'admin'): ?>
+                    <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/index">Kembali</a></p>
+                <?php else: ?>
+                    <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/nilai">Kembali</a></p>
+                <?php endif; ?>              
             <div class="row">
                 <div class="col-md-12">                
                     <!-- Advanced Tables -->
