@@ -51,7 +51,6 @@
                                                 <a class='btn btn-info btn-xs' title='ubah' href="<?php echo base_url().'jawaban/dnilai/'.$row->id_jawaban; ?>">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </a>
-                                                <a class='btn btn-danger btn-xs' title='hapus' onclick="return confirm('hapus?')" href="<?php echo base_url().'jawaban/dnilai/'.$row->id_jawaban; ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

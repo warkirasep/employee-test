@@ -45,7 +45,6 @@
                                             <th>Jawaban E</th>
                                             <th>Kunci</th>
                                             <th>Stasus</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,11 +59,7 @@
                                             <td><?php echo $kon['d']; ?></td>
                                             <td><?php echo $kon['e']; ?></td>
                                             <td><?php echo $kon['kunci']; ?></td>
-                                            <td><?php echo $kon['status']; ?></td>                                           
-                                            <td width='6%'>
-                                            <a class='btn btn-info btn-xs' title='ubah' href="<?php echo base_url();?>soal/edit/<?php echo $kon['id_soal']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a class='btn btn-danger btn-xs' title='hapus' onclick="return confirm('hapus?')" href="<?php echo base_url();?>soal/delete/<?php echo $kon['id_soal']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                            </td>
+                                            <td><?php echo $kon['status']; ?></td>
                                         </tr>
                                     <?php } ?>
                                     </tbody>

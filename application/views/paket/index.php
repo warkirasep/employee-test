@@ -51,9 +51,6 @@
                                             <td><?php echo $pak['paket']; ?></td>
                                             <td>
                                                 <a class='btn btn-info btn-xs' title='lihat' href="<?php echo base_url();?>paket/lihat/<?php echo $pak['id_paket']; ?>"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                                <?php if($userdata['level'] == 'admin'):?>
-                                                    <a class='btn btn-danger btn-xs' title='hapus' onclick="return confirm('Anda yakin ?')" href="<?php echo base_url();?>paket/delete/<?php echo $pak['id_paket']; ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                                <?php endif; ?>
                                             </td>
                                         <tr>
                                     <?php } ?>

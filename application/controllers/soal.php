@@ -81,11 +81,10 @@ class Soal extends CI_Controller {
 
 	public function edit($kode = 0){
 		$this->ceklogin();
-		$data_soal = $this->soal_model->Edit("where id_soal = '$kode'")->result_array();
+		$data_soal = $this->soal_model->edit($kode)->result_array();
 		$this->load->model('paket_model');
 
 		$data = array(
-			'paket' => $this->paket_model->Edit()->result_array(),
 			'soal' => $data_soal[0]['soal'],
 			'a' => $data_soal[0]['a'],
 			'b' => $data_soal[0]['b'],

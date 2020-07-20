@@ -32,14 +32,7 @@
 	$no=1;
 	foreach($nilai as $kon) {		
 		$this->fpdf->Ln(0.5);
-	  	$this->fpdf->Cell(1.5,0.5,$no,0,0,'C');	
-	  	$this->fpdf->Cell(3,0.5,$kon['tgl_tes'],0,0,'L');	
-	  	$this->fpdf->Cell(8,0.5,$kon['nama'],0,0,'L');	
-	  	$this->fpdf->Cell(2,0.5,$kon['benar'],0,0,'C');	
-	  	$this->fpdf->Cell(2,0.5,$kon['salah'],0,0,'C');	
-	  	$this->fpdf->Cell(2,0.5,$kon['total_nilai'],0,0,'C');	
-
-	 $no++;
+		$no++;
 	}
 
 	$this->fpdf->Output();
