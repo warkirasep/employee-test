@@ -24,7 +24,7 @@
 	$this->fpdf->Cell(1.5,0.5,'NO','BT',0,'C');		
 	$this->fpdf->Cell(3,0.5,'TANGGAL TES','BT',0,'L');		
 	$this->fpdf->Cell(3,0.5,'KARYAWAN','BT',0,'L');
-	$this->fpdf->Cell(6,0.5,'MATERI','BT',0,'L');
+	$this->fpdf->Cell(7,0.5,'MATERI','BT',0,'L');
 	$this->fpdf->Cell(2,0.5,'BENAR','BT',0,'L');
 	$this->fpdf->Cell(2,0.5,'SALAH','BT',0,'L');
 	$this->fpdf->Cell(2,0.5,'NILAI','BT',0,'L');
@@ -36,8 +36,7 @@
 	  	$this->fpdf->Cell(1.5,0.5,$no,0,0,'C');	
 	  	$this->fpdf->Cell(3,0.5, date('d-m-Y', strtotime($row->tgl_tes)),0,0,'L');	
 	  	$this->fpdf->Cell(3,0.5,$row->nama,0,0,'L');	
-	  	$this->fpdf->Cell(6,0.5,$row->paket,0,0,'L');	
-	  	$this->fpdf->Cell(2,0.5, jawaban_benar($row->id_jawaban),0,0,'C');	
+	  	$this->fpdf->Cell(7,0.5,$row->paket,0,0,'L'); $this->fpdf->Cell(2,0.5, jawaban_benar($row->id_jawaban),0,0,'C');	
 	  	$this->fpdf->Cell(2,0.5, jawaban_salah($row->id_jawaban),0,0,'C');	
 	  	$this->fpdf->Cell(2,0.5, nilai($row->id_jawaban),0,0,'C');	
 
