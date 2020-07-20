@@ -1,5 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <?php $this->load->view('include/head') ?>
-<body>           
+</head>
+<body>
+    <div id="wrapper">
+        <?php $this->load->view('layouts/topbar'); ?>
+        <!-- /#page-wrapper -->
+    </div> 
+
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
@@ -27,24 +36,22 @@
                                             <th>No</th>                                            
                                             <th>Tanggal Tes</th>
                                             <th>Karyawan</th>
-                                            <th>Benar</th>
-                                            <th>Salah</th>
-                                            <th>Nilai</th>   
+                                            <th>Paket</th>   
                                             <th>Aksi</th>                                                                                     
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $no=0; foreach($nilai as $kon) { $no++?>
+                                    <?php $no=0; foreach($nilai as $row) { $no++?>
                                         <tr>
                                             <td><?php echo $no; ?></td>
-                                            <td><?php echo $kon['tgl_tes']; ?></td>
-                                            <td><?php echo $kon['nama']; ?></td>   
-                                            <td><?php echo $kon['benar']; ?></td>  
-                                            <td><?php echo $kon['salah']; ?></td>  
-                                            <td><?php echo $kon['total_nilai']; ?></td>                                                                                                                       
-                                            <td><a class='btn btn-warning btn-xs' title='detail' href="<?php echo base_url();?>jawaban/dnilai2/<?php echo $kon['id_jawaban']; ?>"><span class="glyphicon glyphicon-eye-open">
-                                            </a> <a class='btn btn-danger btn-xs' title='hapus' onclick="return confirm('Apakah Anda Yakin Ingin menghapus?')" href="<?php echo base_url();?>jawaban/delete/<?php echo $kon['id_jawaban']; ?>"><span class="glyphicon glyphicon-trash"></span></a></span>
-
+                                            <td><?php echo date('d-m-Y', strtotime($row->tgl_tes)); ?></td>
+                                            <td><?php echo $row->nama; ?></td>
+                                            <td><?php echo $row->paket; ?></td>                                                                                                                    
+                                            <td>
+                                                <a class='btn btn-info btn-xs' title='ubah' href="<?php echo base_url().'jawaban/dnilai/'.$row->id_jawaban; ?>">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                                </a>
+                                                <a class='btn btn-danger btn-xs' title='hapus' onclick="return confirm('hapus?')" href="<?php echo base_url().'jawaban/dnilai/'.$row->id_jawaban; ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

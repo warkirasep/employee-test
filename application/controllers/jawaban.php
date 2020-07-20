@@ -23,8 +23,9 @@ class Jawaban extends CI_Controller {
 	public function index()
 	{
 		$this->ceklogin();
+		$nilai = $this->jawaban_model->get_all();
 		$data = array(
-			'nilai'=>$this->jawaban_model->Ambil()->result_array(),			
+			'nilai'=> $nilai		
 		);  
 
 		$this->load->view('jawaban/index', $data);

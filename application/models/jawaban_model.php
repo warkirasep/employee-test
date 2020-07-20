@@ -66,4 +66,13 @@ class Jawaban_model extends Ci_Model {
               WHERE id_karyawan='$idmhs'");
     return $result->result();
   }
+
+  public function get_all()
+  {
+    $result = $this->db->query("SELECT * FROM $this->table
+              INNER JOIN karyawan ON karyawan.id_karyawan=jawaban.id_karyawan
+              INNER JOIN paket ON paket.id_paket=jawaban.id_paket
+              ");
+    return $result->result();
+  }
 }
