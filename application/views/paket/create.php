@@ -26,6 +26,7 @@
                   <div class="form-group">
                     <label>Paket</label>
                     <input class="form-control" name="paket" required/>
+
                   </div>
                   <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Simpan</button>                    

@@ -14,6 +14,17 @@
 		  <div id="page-wrapper" >
 		    <div id="inner">
 			<div class="row"> 			
+            <div class="col-md-3 col-sm-4 col-xs-6">           
+                        <div class="panel panel-primary text-center no-boder bg-color-blue">
+                            <div class="panel-body">
+                                <i class="fa fa-book fa-5x"></i>
+                            </div>
+                            <div class="panel-footer back-footer-blue">
+                                <a style="color:white" href="<?php echo base_url();?>paket">MATERI</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-3  col-xs-4 col-xs-6">           
                         <div class="panel panel-primary text-center no-boder bg-color-red">
                             <div class="panel-body">
@@ -25,7 +36,7 @@
 			    
                         </div>
                     </div>
-
+                    
                     <div class="col-md-3  col-xs-4 col-xs-6">           
                         <div class="panel panel-primary text-center no-boder bg-color-brown">
                             <div class="panel-body">

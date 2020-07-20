@@ -19,7 +19,8 @@ class Paket extends CI_Controller {
 	{
 		$this->ceklogin();
 		$data = array(
-			'paket'=>$this->paket_model->Ambil('order by id_paket asc')->result_array(),			
+			'paket'=>$this->paket_model->Ambil('order by id_paket asc')->result_array(),
+			'userdata' => $this->session->all_userdata()			
 		);  
 
 		$this->load->view('paket/index', $data);

@@ -1,4 +1,4 @@
-<?php $this->load->view('include/head') ?>
+<?php $this->load->view('include/headsis') ?>
 <body>
   <div id="wrapper">    
   <!-- /. NAV TOP  --> 

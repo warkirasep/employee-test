@@ -60,7 +60,7 @@
                 </div>              
                  <!-- /. ROW  -->
                 <hr />                
-                <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/pilih_materi">Kembali</a></p>              
+                <p><a class="btn btn-success" href="<?php echo base_url();?>jawaban/nilai">Kembali</a></p>              
             <div class="row">
                 <div class="col-md-12">                
                     <!-- Advanced Tables -->
