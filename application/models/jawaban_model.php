@@ -75,4 +75,12 @@ class Jawaban_model extends Ci_Model {
               ");
     return $result->result();
   }
+
+  public function cetakNilai(){
+    $result = $this->db->query("SELECT * FROM $this->table
+              INNER JOIN karyawan ON karyawan.id_karyawan=jawaban.id_karyawan
+              INNER JOIN paket ON paket.id_paket=jawaban.id_paket
+              ");
+    return $result->result();
+  }
 }

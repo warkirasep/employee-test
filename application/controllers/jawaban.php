@@ -34,8 +34,9 @@ class Jawaban extends CI_Controller {
 	public function cetak()
 	{
 		$this->ceklogin();
+		$nilai = $this->jawaban_model->cetakNilai();
 		$data = array(
-			'nilai'=>$this->jawaban_model->Ambil()->result_array(),			
+			'nilai'=> $nilai		
 		);		
 		$this->load->library('fpdf');	
 		$this->load->view('jawaban/cetak', $data);

@@ -33,4 +33,31 @@ class Jawaban_detail_model extends Ci_Model {
 				WHERE id_jawaban='$id_jawaban'");
 		return $res->result();
 	}
+
+	public function cekBenar($id_jawaban)
+	{
+		$result = $this->db->query("SELECT COUNT(*) as res FROM $this->table
+					INNER JOIN soal ON jawaban_detail.id_soal=soal.id_soal
+					WHERE jawaban_detail.id_jawaban='$id_jawaban'
+					AND soal.kunci=jawaban_detail.jawaban");
+		return $result->row();
+	}
+
+	public function cekSalah($id_jawaban)
+	{
+		$result = $this->db->query("SELECT COUNT(*) as res FROM $this->table
+					INNER JOIN soal ON jawaban_detail.id_soal=soal.id_soal
+					WHERE jawaban_detail.id_jawaban='$id_jawaban'
+					AND soal.kunci<>jawaban_detail.jawaban");
+		return $result->row();
+	}
+
+	public function hasilNilai($id_jawaban)
+	{
+		$result = $this->db->query("SELECT COUNT(*) as res FROM $this->table
+					INNER JOIN soal ON jawaban_detail.id_soal=soal.id_soal
+					WHERE jawaban_detail.id_jawaban='$id_jawaban'
+					AND soal.kunci=jawaban_detail.jawaban");
+		return $result->row();
+	}
 }
