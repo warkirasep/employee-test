@@ -50,7 +50,12 @@
                                             <td><?php echo $pak['id_paket']; ?></td>
                                             <td><?php echo $pak['paket']; ?></td>
                                             <td>
-                                                <a class='btn btn-info btn-xs' title='lihat' href="<?php echo base_url();?>paket/lihat/<?php echo $pak['id_paket']; ?>"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                                <a class='btn btn-info btn-xs' title='lihat' href="<?php echo base_url();?>paket/lihat/<?php echo $pak['id_paket']; ?>">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </a>
+                                                <a class='btn btn-danger btn-xs' title='download' href="<?php echo base_url();?>paket/download/<?php echo $pak['id_paket']; ?>" target="_blank">
+                                                    <span class="glyphicon glyphicon-download"></span>
+                                                </a>
                                             </td>
                                         <tr>
                                     <?php } ?>

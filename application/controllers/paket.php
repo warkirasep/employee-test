@@ -34,13 +34,10 @@ class Paket extends CI_Controller {
 
 	public function insert(){
 		$this->ceklogin();
-		$id_paket = '';
-		$paket = $_POST['paket'];
 
 		$data = array(
-			'id_paket' => $id_paket,
-			'paket' => $paket,
-			'deskripsi' => $deskripsi
+			'paket' => $this->input->post('paket'),
+			'deskripsi' => $this->input->post('deskripsi')
 		);
 
 		$hasil = $this->paket_model->Simpan('paket', $data);
@@ -84,5 +81,18 @@ class Paket extends CI_Controller {
 		else{
 			echo "mohon periksa kembali";
 		}
+	}
+
+	public function download($id)
+	{
+		$data['paket'] = $this->paket_model->first($id);
+		$this->load->library('pdf');
+
+		$html_content = $this->load->view('paket/cetak', $data, true);
+		$filename = 'Materi.pdf';
+		$this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->loadHtml($html_content);
+        $this->pdf->render();
+        $this->pdf->stream($filename, ['Attachment' => 0]);
 	}
 }
